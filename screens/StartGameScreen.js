@@ -16,6 +16,11 @@ const StartGameScreen = props => {
 
     const [selectedNumber, setSelectedNumber] = useState();
 
+    const [goHighScore, setGoHighScore] = useState(false);
+
+
+   
+
     const numberInputHandler = inputText => {
         setEnteredValue(inputText.replace(/[^0-9]/g, ''));//make sure user cant enter anything else than a number
     };
@@ -46,14 +51,20 @@ const StartGameScreen = props => {
                 <Button title="START GAME" onPress={()=>props.onStartGame(selectedNumber)}/>
 
             </Card>
-
     }
+
+    
 
     return (
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
         }}>
             <View style={styles.screen}>
+
+            <View style={styles.btnContainer}>
+                    <View ><Button title="My HighScore" color={Colors.accent} onPress={()=>props.onMyHighscore(true)}/></View>
+                    <View ><Button title="Hall of Fame" color={Colors.primary} onPress={()=>props.onHallOfFame(true)}/></View>
+                </View>
 
                 <Text style={styles.title}>start game</Text>
 
@@ -76,12 +87,14 @@ const StartGameScreen = props => {
                     </View>
                 </Card>
                 {confirmedOutput}
+                
             </View>
         </TouchableWithoutFeedback>
     );
 };
 
 const styles = StyleSheet.create({
+
     summaryContainer: {
         marginTop: 20,
         alignItems:'center',

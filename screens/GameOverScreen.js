@@ -18,8 +18,7 @@ const GameOverScreen = props => {
                 //Vibrate 
                 Vibration.vibrate();
                 //android
-                ToastAndroid.show("Saved success",20000);
-                
+                //ToastAndroid.show("Saved success",20000);   
             }}/>
         </View>
     );
