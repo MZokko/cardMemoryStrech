@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Vibration, ToastAndroid } from 'react-native';
 
 const GameOverScreen = props => {
 
@@ -12,6 +12,15 @@ const GameOverScreen = props => {
             <Text>Timer :{props.time}</Text>
 
             <Button title="New Game" onPress={props.onRestart} />
+            <Button title="Save" onPress={()=>{
+                //Add to db perso HighScore
+                //Add to hall of famew
+                //Vibrate 
+                Vibration.vibrate();
+                //android
+                ToastAndroid.show("Saved success",20000);
+                
+            }}/>
         </View>
     );
 

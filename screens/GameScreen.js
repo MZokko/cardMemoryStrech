@@ -43,7 +43,10 @@ const GameScreen = props => {
         }
     }, [currentGuess, userChoice, onGameOver]);
 
-    const nextGameHandler = (direction) => {
+    const nextGameHandler = (direction, myTimer) => {
+
+        setMyTimer(myTimer);
+        console.log('myTimer==============:', timer, new Date().getMilliseconds()+'ms');
         //incorect hint
         if ((direction === 'lower' && currentGuess < props.userChoice) || (direction === 'higher' && currentGuess > props.userChoice)) {
             Alert.alert('Don\'t lie !',
@@ -60,7 +63,6 @@ const GameScreen = props => {
         const nextNumber = generateRandomBetween(currentLow.current, currentHigh.current, currentGuess);
         setCurrentGuess(nextNumber);
         setRounds(currentRounds => currentRounds + 1);
-        setMyTimer(timer);
     };
 
     const getCurrentTime = time => {
@@ -68,7 +70,7 @@ const GameScreen = props => {
 
         setMyTimer(time);
         timer = time;
-        console.log('myTimer==============:', timer, new Date().getMilliseconds()+'ms')
+
         
 
     };
